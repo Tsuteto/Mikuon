@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>みくおん - ひらがな→VOCALOID発音記号に変換</title>
+        
+        <style type="text/css">
+body { font-family: sans-serif }
+div.main { margin: 0px auto; width: 800px; }
+h1, p { text-align: center; }
+h1 {  }
+p { padding: 10px; border-radius: 10px; }
+p.input { background-color: #ddffdd; border: 5px solid #66cc66; }
+p.conv { background-color: #373b3e; color: white; }
+p.result { background-color: #d3f5fa; border: 5px solid #137a7f; }
+textarea { font-size: 14pt; width: 400px; }
+#conv { font-size: 1.2em; width: 200px; border-radius: 5px; background-color: white; }
+        </style>
+        
+        <script type="text/javascript" src="./jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" src="./mikuon.js"></script>
+        <script type="text/javascript" src="./main.js"></script>
+    </head>
+    <body onload="init()">
+        <div class="main">
+        <h1>みくおん</h1>
+        <p class="desc">ひらがなやカタカナからVOCALOIDの発音記号に変換します。<br>
+        すでに<a href="http://aikelab.net/mikugo/">ミク語変換</a>があるけどぼくは発音記号が好きなので作ったよ。実用性はあんまないっぽい( っ˘ω˘c)</p>
+        <p class="input">ひらがな／カタカナ<br>
+        <textarea rows="10" cols="60" id="input"></textarea></p>
+        <p class="conv">▼　<button id="conv">変換</button>　▼</p>
+        
+        <p class="result">変換結果<br>
+        <textarea rows="10" cols="60" id="result"></textarea></p>
+        </div>
+        <p>Author: <a href="https://twitter.com/tsuteto">@tsuteto</a></p>
+    </body>
+</html>
