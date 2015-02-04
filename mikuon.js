@@ -36,7 +36,7 @@ Mikuon.convTable = {
 	"でぃ": "d' i", "でゅ": "d' M", 
 	"びゃ": "b' a", "びゅ": "b' M", "びぇ": "b' e", "びょ": "b' o", 
 	"ぴゃ": "p' a", "ぴゅ": "p' M", "ぴぇ": "p' e", "ぴょ": "p' o", 
-	"ー": "-", "っ": ""
+	"ー": "", "っ": ""
 };
 
 Mikuon.youonKana = ["ぁ", "ぃ", "ぅ", "ぇ", "ぉ", "ゃ", "ゅ", "ょ", "゜"];
@@ -54,13 +54,20 @@ Mikuon.prototype = {
 	
 	convertLine: function(input) {
 		var atomized = this.atomize(input);
+		var prevVowel = null;
 		var result = [];
 		$.each(atomized, function() {
-			var pron = Mikuon.convTable[this];
-			if (pron != undefined) {
-				result.push(pron);
+			if ((this == "っ" || this == "ー")  && prevVowel != null) {
+				result.push(prevVowel)
 			} else {
-				result.push(this);
+				var pron = Mikuon.convTable[this];
+				if (pron != undefined) {
+					result.push(pron);
+					prevVowel = pron.slice(-1);
+				} else {
+					result.push(this);
+					prevVowel = null;
+				}
 			}
 		});
 		return result.join(" ");
